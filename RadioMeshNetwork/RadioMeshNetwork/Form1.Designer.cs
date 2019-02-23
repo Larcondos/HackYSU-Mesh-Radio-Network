@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MessagesListBox = new System.Windows.Forms.ListBox();
             this.AvaialbleRadiosCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.ConfirmationTextbox = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.TypeMessageTextbox = new System.Windows.Forms.TextBox();
+            this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.SuspendLayout();
             // 
             // MessagesListBox
@@ -100,6 +102,7 @@
         private System.Windows.Forms.TextBox ConfirmationTextbox;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox TypeMessageTextbox;
+        private System.IO.Ports.SerialPort serialPort;
     }
 }
 
