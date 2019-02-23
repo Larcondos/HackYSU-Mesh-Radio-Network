@@ -52,17 +52,17 @@
             // AvaialbleRadiosCheckedListBox
             // 
             this.AvaialbleRadiosCheckedListBox.FormattingEnabled = true;
-            this.AvaialbleRadiosCheckedListBox.Location = new System.Drawing.Point(13, 13);
+            this.AvaialbleRadiosCheckedListBox.Location = new System.Drawing.Point(13, 12);
             this.AvaialbleRadiosCheckedListBox.Name = "AvaialbleRadiosCheckedListBox";
             this.AvaialbleRadiosCheckedListBox.Size = new System.Drawing.Size(251, 319);
             this.AvaialbleRadiosCheckedListBox.TabIndex = 1;
             // 
             // ConfirmationTextbox
             // 
-            this.ConfirmationTextbox.Location = new System.Drawing.Point(13, 339);
+            this.ConfirmationTextbox.Location = new System.Drawing.Point(13, 337);
             this.ConfirmationTextbox.Multiline = true;
             this.ConfirmationTextbox.Name = "ConfirmationTextbox";
-            this.ConfirmationTextbox.Size = new System.Drawing.Size(251, 41);
+            this.ConfirmationTextbox.Size = new System.Drawing.Size(251, 44);
             this.ConfirmationTextbox.TabIndex = 2;
             this.ConfirmationTextbox.Text = "Verifies if a message was sent...";
             // 
