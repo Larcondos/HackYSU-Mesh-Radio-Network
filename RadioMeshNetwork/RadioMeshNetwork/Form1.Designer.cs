@@ -32,7 +32,6 @@
             this.MessagesListBox = new System.Windows.Forms.ListBox();
             this.AvaialbleRadiosCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.ConfirmationTextbox = new System.Windows.Forms.TextBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.TypeMessageTextbox = new System.Windows.Forms.TextBox();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.SendMessageButton = new System.Windows.Forms.Button();
@@ -41,6 +40,7 @@
             this.NetworkUpdateButton = new System.Windows.Forms.Button();
             this.COMPortsCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.RestartButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // MessagesListBox
@@ -74,13 +74,6 @@
             this.ConfirmationTextbox.Size = new System.Drawing.Size(251, 44);
             this.ConfirmationTextbox.TabIndex = 2;
             this.ConfirmationTextbox.Text = "Current Status: Unconnected";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(13, 517);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(575, 23);
-            this.progressBar1.TabIndex = 3;
             // 
             // TypeMessageTextbox
             // 
@@ -159,6 +152,13 @@
             this.RestartButton.UseVisualStyleBackColor = true;
             this.RestartButton.Click += new System.EventHandler(this.RestartButton_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(13, 517);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(575, 23);
+            this.progressBar1.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,7 +188,6 @@
         private System.Windows.Forms.ListBox MessagesListBox;
         private System.Windows.Forms.CheckedListBox AvaialbleRadiosCheckedListBox;
         private System.Windows.Forms.TextBox ConfirmationTextbox;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox TypeMessageTextbox;
         private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.Button SendMessageButton;
@@ -197,6 +196,7 @@
         private System.Windows.Forms.Button NetworkUpdateButton;
         private System.Windows.Forms.CheckedListBox COMPortsCheckedListBox;
         private System.Windows.Forms.Button RestartButton;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

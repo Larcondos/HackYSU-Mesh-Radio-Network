@@ -38,32 +38,42 @@ namespace RadioMeshNetwork
             // Write to the port
             string messageToWrite = "";
 
-            messageToWrite = messageToWrite + AvaialbleRadiosCheckedListBox.SelectedItem.ToString();    //Append the radio to send message to
+            //messageToWrite = messageToWrite + AvaialbleRadiosCheckedListBox.SelectedItem.ToString();    //Append the radio to send message to
+
+            messageToWrite += DateTime.Now.ToString("hh:mm:ss") + ": ";
 
             messageToWrite += TypeMessageTextbox.Text;
 
-            if (messageToWrite.Length > 32)
-            { 
-                for (int i = 0; i < messageToWrite.Length; i = i + 32)
-                {
-                    serialPort.Write(messageToWrite.Substring(i, 32));
-                    MessagesListBox.Items.Add(messageToWrite.Substring(i, 32));
-                    Console.WriteLine(messageToWrite);
-                }
-            }
-            else
+            while (messageToWrite.Length > 0)
             {
-                serialPort.Write(messageToWrite);
-                //Thread.Sleep(1000);
-                MessagesListBox.Items.Add(TypeMessageTextbox.Text);
+                if ( messageToWrite.Length > 32)
+                {
+                    messageToWrite.Substring(0, 32);
+                    serialPort.Write(messageToWrite.Substring(0, 32));
+                    MessagesListBox.Items.Add(messageToWrite.Substring(0, 32));
+                    messageToWrite = messageToWrite.Remove(0, 32);
+                }
+                else
+                {
+                    serialPort.Write(messageToWrite);
+                    MessagesListBox.Items.Add(messageToWrite);
+                    messageToWrite = "";
+                }
 
-                // Nice little trick, selects focus on the last item in the listbox (A.K.A. newest message), 
-                // and then unselects it to keep focus off again.
-                MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
-                MessagesListBox.SelectedIndex = -1;
             }
 
 
+            //Thread.Sleep(1000);
+           
+
+            // Nice little trick, selects focus on the last item in the listbox (A.K.A. newest message), 
+            // and then unselects it to keep focus off again.
+            MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
+            MessagesListBox.SelectedIndex = -1;
+
+            TypeMessageTextbox.Clear();
+            TypeMessageTextbox.Focus();
+            
 
         }
 
