@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.IO.Ports;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+using System.Timers;
+
 
 namespace RadioMeshNetwork
 {
@@ -17,8 +12,8 @@ namespace RadioMeshNetwork
     {
         private void Form1_Load(object sender, EventArgs e)
         {
-            serialPort.ReadTimeout = 500;
-            serialPort.WriteTimeout = 500;
+            serialPort.ReadTimeout = 2000;
+            serialPort.WriteTimeout = -1;
 
             string[] ports = SerialPort.GetPortNames();
 
@@ -30,7 +25,6 @@ namespace RadioMeshNetwork
                 Console.WriteLine(port);
                 COMPortsCheckedListBox.Items.Add(port);
             }
-
 
         }
 
@@ -44,17 +38,14 @@ namespace RadioMeshNetwork
             // Write to the port
             string messageToWrite = "";
 
-            messageToWrite += AvaialbleRadiosCheckedListBox.SelectedItem.ToString();    //Append the radio to send message to
+            messageToWrite = messageToWrite + AvaialbleRadiosCheckedListBox.SelectedItem.ToString();    //Append the radio to send message to
 
             messageToWrite += TypeMessageTextbox.Text;
 
-            if (messageToWrite.Length > 32)
-            {
-                messageToWrite.SplitInParts(32);
-            }
 
             serialPort.Write(messageToWrite);
-            MessagesListBox.Items.Add(serialPort.ReadLine());
+            //Thread.Sleep(1000);
+            MessagesListBox.Items.Add(TypeMessageTextbox.Text);
         }
 
         private void connectButton_Click(object sender, EventArgs e)
@@ -65,14 +56,53 @@ namespace RadioMeshNetwork
                 serialPort.PortName = COMPortsCheckedListBox.SelectedItem.ToString();
             }
 
-            serialPort.Open();
-            serialPort.Write("v");
-            ConfirmationTextbox.Text = serialPort.ReadLine();
+            try
+            {
+                serialPort.Open();
+                serialPort.Write("v");
+
+                ConfirmationTextbox.Text = serialPort.ReadLine();
+                SendMessageButton.Enabled = true;
+            }
+            catch(TimeoutException)
+            {
+                serialPort.Close();
+            }
         }
 
         private void TypeMessageTextbox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void NetworkUpdateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String serialRead = serialPort.ReadLine();
+                serialRead = serialRead.Substring(1);
+                MessagesListBox.Items.Add(serialRead);
+            }
+            catch (TimeoutException)
+            {
+            }
+        }
+
+        private void fetchRadiosButton_Click(object sender, EventArgs e)
+        {
+            serialPort.Write("f");
+        }
+
+        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                MessagesListBox.Items.Add(serialPort.ReadLine());
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 

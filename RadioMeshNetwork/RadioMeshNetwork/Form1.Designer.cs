@@ -37,8 +37,8 @@
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.SendMessageButton = new System.Windows.Forms.Button();
             this.connectButton = new System.Windows.Forms.Button();
-            this.disconnectButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.fetchRadiosButton = new System.Windows.Forms.Button();
+            this.NetworkUpdateButton = new System.Windows.Forms.Button();
             this.COMPortsCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
@@ -53,6 +53,12 @@
             // AvaialbleRadiosCheckedListBox
             // 
             this.AvaialbleRadiosCheckedListBox.FormattingEnabled = true;
+            this.AvaialbleRadiosCheckedListBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
             this.AvaialbleRadiosCheckedListBox.Location = new System.Drawing.Point(13, 12);
             this.AvaialbleRadiosCheckedListBox.Name = "AvaialbleRadiosCheckedListBox";
             this.AvaialbleRadiosCheckedListBox.Size = new System.Drawing.Size(251, 139);
@@ -86,10 +92,12 @@
             // 
             // serialPort
             // 
-            this.serialPort.PortName = "COM5";
+            this.serialPort.ReadTimeout = 10000;
+            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // SendMessageButton
             // 
+            this.SendMessageButton.Enabled = false;
             this.SendMessageButton.Location = new System.Drawing.Point(270, 461);
             this.SendMessageButton.Name = "SendMessageButton";
             this.SendMessageButton.Size = new System.Drawing.Size(318, 50);
@@ -108,23 +116,25 @@
             this.connectButton.UseVisualStyleBackColor = true;
             this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
-            // disconnectButton
+            // fetchRadiosButton
             // 
-            this.disconnectButton.Location = new System.Drawing.Point(12, 430);
-            this.disconnectButton.Name = "disconnectButton";
-            this.disconnectButton.Size = new System.Drawing.Size(251, 37);
-            this.disconnectButton.TabIndex = 7;
-            this.disconnectButton.Text = "Disconnect from Radio";
-            this.disconnectButton.UseVisualStyleBackColor = true;
+            this.fetchRadiosButton.Location = new System.Drawing.Point(13, 431);
+            this.fetchRadiosButton.Name = "fetchRadiosButton";
+            this.fetchRadiosButton.Size = new System.Drawing.Size(112, 37);
+            this.fetchRadiosButton.TabIndex = 7;
+            this.fetchRadiosButton.Text = "Disconnect from Radio";
+            this.fetchRadiosButton.UseVisualStyleBackColor = true;
+            this.fetchRadiosButton.Click += new System.EventHandler(this.fetchRadiosButton_Click);
             // 
-            // button3
+            // NetworkUpdateButton
             // 
-            this.button3.Location = new System.Drawing.Point(13, 474);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(251, 37);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Network Test";
-            this.button3.UseVisualStyleBackColor = true;
+            this.NetworkUpdateButton.Location = new System.Drawing.Point(13, 474);
+            this.NetworkUpdateButton.Name = "NetworkUpdateButton";
+            this.NetworkUpdateButton.Size = new System.Drawing.Size(251, 37);
+            this.NetworkUpdateButton.TabIndex = 8;
+            this.NetworkUpdateButton.Text = "Network Update";
+            this.NetworkUpdateButton.UseVisualStyleBackColor = true;
+            this.NetworkUpdateButton.Click += new System.EventHandler(this.NetworkUpdateButton_Click);
             // 
             // COMPortsCheckedListBox
             // 
@@ -140,8 +150,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 552);
             this.Controls.Add(this.COMPortsCheckedListBox);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.disconnectButton);
+            this.Controls.Add(this.NetworkUpdateButton);
+            this.Controls.Add(this.fetchRadiosButton);
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.SendMessageButton);
             this.Controls.Add(this.TypeMessageTextbox);
@@ -167,8 +177,8 @@
         private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.Button SendMessageButton;
         private System.Windows.Forms.Button connectButton;
-        private System.Windows.Forms.Button disconnectButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button fetchRadiosButton;
+        private System.Windows.Forms.Button NetworkUpdateButton;
         private System.Windows.Forms.CheckedListBox COMPortsCheckedListBox;
     }
 }

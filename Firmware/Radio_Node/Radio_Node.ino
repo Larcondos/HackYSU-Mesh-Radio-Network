@@ -12,7 +12,7 @@ NRFLite _radio;
 
 uint8_t radioIDs[MAX_RADIOS] = {};  //List of all possible radios on network
 uint8_t radioIndex = 0;
-uint8_t thisRadioId = 2;    //TESTING, radio to recieve data's id
+uint8_t thisRadioId = 1;    //TESTING, radio to recieve data's id
 uint8_t otherRadioId = 2;
 
 //BYTES:
@@ -80,6 +80,8 @@ void setup()
     Serial.print("Radio Started on channel: ");
     Serial.println(thisRadioId,DEC);
   } 
+
+  Serial.flush();
   //findNearbyRadios();
 
   //listFoundRadios();
@@ -110,6 +112,7 @@ void loop()
 
         Serial.println(incomingPacket[0] - 48,DEC);
         _radio.send((incomingPacket[0] - 48),&incomingPacket,sizeof(incomingPacket));
+        Serial.flush();
     }
   }
   
