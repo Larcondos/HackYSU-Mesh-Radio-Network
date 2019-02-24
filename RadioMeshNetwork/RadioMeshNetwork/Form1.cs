@@ -54,7 +54,7 @@ namespace RadioMeshNetwork
             }
 
             serialPort.Open();
-            
+            serialPort.Write("v");
         }
 
 
