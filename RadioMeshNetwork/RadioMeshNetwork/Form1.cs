@@ -37,27 +37,31 @@ namespace RadioMeshNetwork
         {
             // Write to the port
             string messageToWrite = "";
+            string messageToWriteSerial = "";
 
             //messageToWrite = messageToWrite + AvaialbleRadiosCheckedListBox.SelectedItem.ToString();    //Append the radio to send message to
-
+            //form pretty message
             messageToWrite += DateTime.Now.ToString("hh:mm:ss") + ": ";
-
             messageToWrite += TypeMessageTextbox.Text;
 
-            while (messageToWrite.Length > 0)
+            //form serial message
+            messageToWriteSerial += AvaialbleRadiosCheckedListBox.SelectedItem.ToString();
+            messageToWriteSerial += TypeMessageTextbox.Text;
+
+            while (messageToWriteSerial.Length > 0)
             {
-                if ( messageToWrite.Length > 32)
+                if ( messageToWriteSerial.Length > 32)
                 {
-                    messageToWrite.Substring(0, 32);
-                    serialPort.Write(messageToWrite.Substring(0, 32));
-                    MessagesListBox.Items.Add(messageToWrite.Substring(0, 32));
-                    messageToWrite = messageToWrite.Remove(0, 32);
+                    messageToWriteSerial.Substring(0, 32);
+                    serialPort.Write(messageToWriteSerial.Substring(0, 32));
+                    MessagesListBox.Items.Add(messageToWriteSerial.Substring(0, 32));
+                    messageToWriteSerial = messageToWriteSerial.Remove(0, 32);
                 }
                 else
                 {
-                    serialPort.Write(messageToWrite);
+                    serialPort.Write(messageToWriteSerial);
                     MessagesListBox.Items.Add(messageToWrite);
-                    messageToWrite = "";
+                    messageToWriteSerial = "";
                 }
 
             }
@@ -124,8 +128,10 @@ namespace RadioMeshNetwork
         {
             try
             {
-                MessagesListBox.Items.Add(serialPort.ReadLine());
-                MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
+                String messageToDisplay = "";
+                messageToDisplay += serialPort.ReadLine();
+                MessagesListBox.Items.Add(messageToDisplay);
+                //MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
             }
             catch (Exception)
             {
