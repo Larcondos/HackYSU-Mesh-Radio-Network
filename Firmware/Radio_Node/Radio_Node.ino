@@ -20,7 +20,7 @@ uint8_t otherRadioId = 2;
 //1: radio ID
 //2: transaction ID
 //3-32 : payload
-byte incomingPacket[32];
+char incomingPacket[32];
 
 uint8_t data;
 
@@ -57,7 +57,7 @@ void composeMessage()
 {
   Serial.flush();
 
-  if(Serial.available() > 0)
+  while(Serial.available() > 0)
   {
     String message = Serial.readString();
     Serial.println(message);
@@ -90,34 +90,37 @@ void loop()
 {
   if(Serial.available() > 0)
   {  
-    char option = Serial.read();
+    String option = Serial.readString();
 
-    switch(option)
+    if(option == "f")
     {
-      case('T'):
-      {
-        Serial.println("Preparing to transmit...");
-        composeMessage();
-        break;
-      }
-      case('F'):
-      {
         Serial.println("Listing all radios...");
         findNearbyRadios();
         listFoundRadios();
-        break;
-      }
-      case('v'):
-      {
-        Serial.println("Connected to radio!");
-        break;  
-      }
+    }
+    else if(option == "v")
+    {
+       Serial.println("Connected to radio!");  
+    }
+    else
+    {
+        Serial.println("Sending message :" + option);
+
+        option.toCharArray(incomingPacket,sizeof(incomingPacket));
+
+        Serial.println(incomingPacket[0] - 48,DEC);
+        _radio.send((incomingPacket[0] - 48),&incomingPacket,sizeof(incomingPacket));
     }
   }
   
   if(_radio.hasData())
   {
+     _radio.readData(&incomingPacket);
+
+    String msg(incomingPacket);
      
+     Serial.println(msg);
   }
 }
+
 

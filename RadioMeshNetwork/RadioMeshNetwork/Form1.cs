@@ -42,8 +42,13 @@ namespace RadioMeshNetwork
         private void SendMessageButton_Click(object sender, EventArgs e)
         {
             // Write to the port
-            serialPort.Write("T");
-            serialPort.Write(TypeMessageTextbox.Text);
+            string messageToWrite = "";
+
+            messageToWrite += AvaialbleRadiosCheckedListBox.SelectedItem.ToString();    //Append the radio to send message to
+
+            messageToWrite += TypeMessageTextbox.Text;
+
+            serialPort.Write(messageToWrite);
             MessagesListBox.Items.Add(serialPort.ReadLine());
         }
 
