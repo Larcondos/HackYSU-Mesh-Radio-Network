@@ -82,6 +82,7 @@
             this.TypeMessageTextbox.Size = new System.Drawing.Size(318, 67);
             this.TypeMessageTextbox.TabIndex = 4;
             this.TypeMessageTextbox.Text = "Type your message here...";
+            this.TypeMessageTextbox.TextChanged += new System.EventHandler(this.TypeMessageTextbox_TextChanged);
             // 
             // serialPort
             // 
