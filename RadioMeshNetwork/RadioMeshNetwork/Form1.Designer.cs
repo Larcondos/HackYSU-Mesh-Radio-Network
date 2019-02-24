@@ -40,6 +40,7 @@
             this.fetchRadiosButton = new System.Windows.Forms.Button();
             this.NetworkUpdateButton = new System.Windows.Forms.Button();
             this.COMPortsCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.RestartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MessagesListBox
@@ -118,16 +119,18 @@
             // 
             // fetchRadiosButton
             // 
+            this.fetchRadiosButton.Enabled = false;
             this.fetchRadiosButton.Location = new System.Drawing.Point(13, 431);
             this.fetchRadiosButton.Name = "fetchRadiosButton";
             this.fetchRadiosButton.Size = new System.Drawing.Size(112, 37);
             this.fetchRadiosButton.TabIndex = 7;
-            this.fetchRadiosButton.Text = "Disconnect from Radio";
+            this.fetchRadiosButton.Text = "Fetch Radios";
             this.fetchRadiosButton.UseVisualStyleBackColor = true;
             this.fetchRadiosButton.Click += new System.EventHandler(this.fetchRadiosButton_Click);
             // 
             // NetworkUpdateButton
             // 
+            this.NetworkUpdateButton.Enabled = false;
             this.NetworkUpdateButton.Location = new System.Drawing.Point(13, 474);
             this.NetworkUpdateButton.Name = "NetworkUpdateButton";
             this.NetworkUpdateButton.Size = new System.Drawing.Size(251, 37);
@@ -144,11 +147,23 @@
             this.COMPortsCheckedListBox.Size = new System.Drawing.Size(250, 169);
             this.COMPortsCheckedListBox.TabIndex = 9;
             // 
+            // RestartButton
+            // 
+            this.RestartButton.Enabled = false;
+            this.RestartButton.Location = new System.Drawing.Point(158, 431);
+            this.RestartButton.Name = "RestartButton";
+            this.RestartButton.Size = new System.Drawing.Size(105, 37);
+            this.RestartButton.TabIndex = 10;
+            this.RestartButton.Text = "Restart Radio";
+            this.RestartButton.UseVisualStyleBackColor = true;
+            this.RestartButton.Click += new System.EventHandler(this.RestartButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 552);
+            this.Controls.Add(this.RestartButton);
             this.Controls.Add(this.COMPortsCheckedListBox);
             this.Controls.Add(this.NetworkUpdateButton);
             this.Controls.Add(this.fetchRadiosButton);
@@ -180,6 +195,7 @@
         private System.Windows.Forms.Button fetchRadiosButton;
         private System.Windows.Forms.Button NetworkUpdateButton;
         private System.Windows.Forms.CheckedListBox COMPortsCheckedListBox;
+        private System.Windows.Forms.Button RestartButton;
     }
 }
 

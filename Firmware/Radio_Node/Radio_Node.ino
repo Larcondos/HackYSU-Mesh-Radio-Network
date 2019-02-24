@@ -12,7 +12,7 @@ NRFLite _radio;
 
 uint8_t radioIDs[MAX_RADIOS] = {};  //List of all possible radios on network
 uint8_t radioIndex = 0;
-uint8_t thisRadioId = 1;    //TESTING, radio to recieve data's id
+uint8_t thisRadioId = 2;    //TESTING, radio to recieve data's id
 uint8_t otherRadioId = 2;
 
 //BYTES:
@@ -106,8 +106,6 @@ void loop()
     }
     else
     {
-        Serial.println("Sending message :" + option);
-
         option.toCharArray(incomingPacket,sizeof(incomingPacket));
 
         Serial.println(incomingPacket[0] - 48,DEC);

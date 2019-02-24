@@ -63,8 +63,11 @@ namespace RadioMeshNetwork
 
                 ConfirmationTextbox.Text = serialPort.ReadLine();
                 SendMessageButton.Enabled = true;
+                fetchRadiosButton.Enabled = true;
+                RestartButton.Enabled = true;
+                NetworkUpdateButton.Enabled = true;
             }
-            catch(TimeoutException)
+            catch(Exception)
             {
                 serialPort.Close();
             }
@@ -102,6 +105,31 @@ namespace RadioMeshNetwork
             catch (Exception)
             {
 
+            }
+        }
+
+        private void RestartButton_Click(object sender, EventArgs e)
+        {
+            serialPort.Close();
+
+            // Open a serial comm port
+            foreach (int indexChecked in COMPortsCheckedListBox.CheckedIndices)
+            {
+                serialPort.PortName = COMPortsCheckedListBox.SelectedItem.ToString();
+            }
+
+            try
+            {
+                serialPort.Open();
+                serialPort.Write("v");
+
+                ConfirmationTextbox.Text = serialPort.ReadLine();
+                SendMessageButton.Enabled = true;
+                fetchRadiosButton.Enabled = true;
+            }
+            catch (TimeoutException)
+            {
+                serialPort.Close();
             }
         }
     }
