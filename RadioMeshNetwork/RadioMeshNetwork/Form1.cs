@@ -48,6 +48,11 @@ namespace RadioMeshNetwork
         private void connectButton_Click(object sender, EventArgs e)
         {
             // Open a serial comm port
+            foreach (int indexChecked in COMPortsCheckedListBox.CheckedIndices)
+            {
+                serialPort.PortName = COMPortsCheckedListBox.GetItemCheckState(indexChecked).ToString();
+            }
+
             serialPort.Open();
             
         }
