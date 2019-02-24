@@ -56,16 +56,12 @@ void listFoundRadios()
 void composeMessage()
 {
   Serial.flush();
-  
-  while(true)
+
+  if(Serial.available() > 0)
   {
-    if(Serial.available() > 0)
-    {
-      String message = Serial.readString();
-      Serial.println(message);
-      break;
-    } 
-  }
+    String message = Serial.readString();
+    Serial.println(message);
+  } 
 }
 
 void shutdownRadio()

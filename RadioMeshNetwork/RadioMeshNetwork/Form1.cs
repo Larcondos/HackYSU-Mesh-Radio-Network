@@ -42,7 +42,9 @@ namespace RadioMeshNetwork
         private void SendMessageButton_Click(object sender, EventArgs e)
         {
             // Write to the port
+            serialPort.Write("T");
             serialPort.Write(TypeMessageTextbox.Text);
+            MessagesListBox.Items.Add(serialPort.ReadLine());
         }
 
         private void connectButton_Click(object sender, EventArgs e)
@@ -55,6 +57,7 @@ namespace RadioMeshNetwork
 
             serialPort.Open();
             serialPort.Write("v");
+            ConfirmationTextbox.Text = serialPort.ReadLine();
         }
 
 
