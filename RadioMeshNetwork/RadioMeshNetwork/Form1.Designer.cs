@@ -70,9 +70,10 @@
             this.ConfirmationTextbox.Location = new System.Drawing.Point(13, 337);
             this.ConfirmationTextbox.Multiline = true;
             this.ConfirmationTextbox.Name = "ConfirmationTextbox";
+            this.ConfirmationTextbox.ReadOnly = true;
             this.ConfirmationTextbox.Size = new System.Drawing.Size(251, 44);
             this.ConfirmationTextbox.TabIndex = 2;
-            this.ConfirmationTextbox.Text = "Verifies if a message was sent...";
+            this.ConfirmationTextbox.Text = "Current Status: Unconnected";
             // 
             // progressBar1
             // 
@@ -86,10 +87,10 @@
             this.TypeMessageTextbox.Location = new System.Drawing.Point(270, 387);
             this.TypeMessageTextbox.Multiline = true;
             this.TypeMessageTextbox.Name = "TypeMessageTextbox";
-            this.TypeMessageTextbox.Size = new System.Drawing.Size(318, 67);
+            this.TypeMessageTextbox.Size = new System.Drawing.Size(318, 68);
             this.TypeMessageTextbox.TabIndex = 4;
             this.TypeMessageTextbox.Text = "Type your message here...";
-            this.TypeMessageTextbox.TextChanged += new System.EventHandler(this.TypeMessageTextbox_TextChanged);
+            this.TypeMessageTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TypeMessageTextbox_KeyDown);
             // 
             // serialPort
             // 

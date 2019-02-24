@@ -20,7 +20,7 @@ namespace RadioMeshNetwork
             Console.WriteLine("The following serial ports were found:");
 
             // Display each port name to the console.
-            foreach(string port in ports)
+            foreach (string port in ports)
             {
                 Console.WriteLine(port);
                 COMPortsCheckedListBox.Items.Add(port);
@@ -42,10 +42,29 @@ namespace RadioMeshNetwork
 
             messageToWrite += TypeMessageTextbox.Text;
 
+            if (messageToWrite.Length > 32)
+            { 
+                for (int i = 0; i < messageToWrite.Length; i = i + 32)
+                {
+                    serialPort.Write(messageToWrite.Substring(i, 32));
+                    MessagesListBox.Items.Add(messageToWrite.Substring(i, 32));
+                    Console.WriteLine(messageToWrite);
+                }
+            }
+            else
+            {
+                serialPort.Write(messageToWrite);
+                //Thread.Sleep(1000);
+                MessagesListBox.Items.Add(TypeMessageTextbox.Text);
 
-            serialPort.Write(messageToWrite);
-            //Thread.Sleep(1000);
-            MessagesListBox.Items.Add(TypeMessageTextbox.Text);
+                // Nice little trick, selects focus on the last item in the listbox (A.K.A. newest message), 
+                // and then unselects it to keep focus off again.
+                MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
+                MessagesListBox.SelectedIndex = -1;
+            }
+
+
+
         }
 
         private void connectButton_Click(object sender, EventArgs e)
@@ -67,15 +86,10 @@ namespace RadioMeshNetwork
                 RestartButton.Enabled = true;
                 NetworkUpdateButton.Enabled = true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 serialPort.Close();
             }
-        }
-
-        private void TypeMessageTextbox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void NetworkUpdateButton_Click(object sender, EventArgs e)
@@ -101,6 +115,7 @@ namespace RadioMeshNetwork
             try
             {
                 MessagesListBox.Items.Add(serialPort.ReadLine());
+                MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
             }
             catch (Exception)
             {
@@ -132,6 +147,17 @@ namespace RadioMeshNetwork
                 serialPort.Close();
             }
         }
+
+        private void TypeMessageTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendMessageButton_Click(this, new EventArgs());
+            }
+        }
+
+       
+
     }
 
     static class StringExtensions
