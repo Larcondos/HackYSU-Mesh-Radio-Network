@@ -83,6 +83,10 @@
             this.TypeMessageTextbox.TabIndex = 4;
             this.TypeMessageTextbox.Text = "Type your message here...";
             // 
+            // serialPort
+            // 
+            this.serialPort.PortName = "COM5";
+            // 
             // SendMessageButton
             // 
             this.SendMessageButton.Location = new System.Drawing.Point(270, 461);

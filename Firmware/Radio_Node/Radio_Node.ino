@@ -53,6 +53,26 @@ void listFoundRadios()
   } 
 }
 
+void composeMessage()
+{
+  Serial.flush();
+  
+  while(true)
+  {
+    if(Serial.available() > 0)
+    {
+      String message = Serial.readString();
+      Serial.println(message);
+      break;
+    } 
+  }
+}
+
+void shutdownRadio()
+{
+  _radio.powerDown();  
+}
+
 void setup() 
 {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -64,14 +84,41 @@ void setup()
     Serial.print("Radio Started on channel: ");
     Serial.println(thisRadioId,DEC);
   } 
-  findNearbyRadios();
+  //findNearbyRadios();
 
-  listFoundRadios();
+  //listFoundRadios();
 
 }
 
 void loop() 
 {
+  if(Serial.available() > 0)
+  {  
+    char option = Serial.read();
+
+    switch(option)
+    {
+      case('T'):
+      {
+        Serial.println("Preparing to transmit...");
+        composeMessage();
+        break;
+      }
+      case('F'):
+      {
+        Serial.println("Listing all radios...");
+        findNearbyRadios();
+        listFoundRadios();
+        break;
+      }
+      case('v'):
+      {
+        Serial.println("Connected to radio!");
+        break;  
+      }
+    }
+  }
+  
   if(_radio.hasData())
   {
      

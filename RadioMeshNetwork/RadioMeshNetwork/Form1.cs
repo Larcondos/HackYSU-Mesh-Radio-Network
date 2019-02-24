@@ -50,7 +50,7 @@ namespace RadioMeshNetwork
             // Open a serial comm port
             foreach (int indexChecked in COMPortsCheckedListBox.CheckedIndices)
             {
-                serialPort.PortName = COMPortsCheckedListBox.GetItemText(indexChecked).ToString();
+                serialPort.PortName = COMPortsCheckedListBox.SelectedItem.ToString();
             }
 
             serialPort.Open();

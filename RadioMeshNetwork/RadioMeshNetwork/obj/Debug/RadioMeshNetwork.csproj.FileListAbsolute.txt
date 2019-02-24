@@ -8,3 +8,13 @@ C:\Users\larco\Documents\Visual Studio 2017\Projects\RadioMesh\HackYSU-Mesh-Radi
 C:\Users\larco\Documents\Visual Studio 2017\Projects\RadioMesh\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.csproj.CoreCompileInputs.cache
 C:\Users\larco\Documents\Visual Studio 2017\Projects\RadioMesh\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.exe
 C:\Users\larco\Documents\Visual Studio 2017\Projects\RadioMesh\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.pdb
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\bin\Debug\RadioMeshNetwork.exe.config
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\bin\Debug\RadioMeshNetwork.exe
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\bin\Debug\RadioMeshNetwork.pdb
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.csprojAssemblyReference.cache
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.Form1.resources
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.Properties.Resources.resources
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.csproj.GenerateResource.cache
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.csproj.CoreCompileInputs.cache
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.exe
+C:\Users\krlic\Documents\GitHub\HackYSU-Mesh-Radio-Network\RadioMeshNetwork\RadioMeshNetwork\obj\Debug\RadioMeshNetwork.pdb
