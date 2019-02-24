@@ -107,8 +107,6 @@ void loop()
     else
     {
         option.toCharArray(incomingPacket,sizeof(incomingPacket));
-
-        Serial.println(incomingPacket[0] - 48,DEC);
         _radio.send((incomingPacket[0] - 48),&incomingPacket,sizeof(incomingPacket));
         Serial.flush();
     }
